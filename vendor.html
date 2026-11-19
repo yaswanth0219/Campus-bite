@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBite — Vendor Dashboard</title>
+
+    <link rel="stylesheet" href="vendor.css">
+</head>
+
+<body>
+
+    <header class="vendor-topbar">
+        <div class="vendor-brand">
+            <div class="brand-icon">🍴</div>
+
+            <div>
+                <h2>CampusBite</h2>
+                <span>Vendor Dashboard</span>
+            </div>
+        </div>
+
+        <div class="vendor-info">
+            <span class="status-dot"></span>
+            <span>Food Court A</span>
+        </div>
+    </header>
+
+
+    <main class="dashboard">
+
+        <!-- HEADER -->
+
+        <section class="dashboard-header">
+
+            <div>
+                <div class="eyebrow">FOOD COURT A</div>
+
+                <h1>Orders</h1>
+
+                <p>
+                    Manage incoming CampusBite orders and update their status.
+                </p>
+            </div>
+
+            <div class="dashboard-date" id="currentDate">
+                Today
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+
+                <div>
+                    <span>Total Orders</span>
+                    <strong id="totalOrders">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🕐</div>
+
+                <div>
+                    <span>New Orders</span>
+                    <strong id="newOrders">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">🍳</div>
+
+                <div>
+                    <span>Preparing</span>
+                    <strong id="preparingOrders">0</strong>
+                </div>
+            </div>
+
+
+            <div class="stat-card">
+                <div class="stat-icon">✓</div>
+
+                <div>
+                    <span>Ready</span>
+                    <strong id="readyOrders">0</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- FILTERS -->
+
+        <section class="orders-section">
+
+            <div class="orders-header">
+
+                <div>
+                    <h2>Incoming Orders</h2>
+                    <p>Update each order as you prepare it.</p>
+                </div>
+
+                <div class="order-filters">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="placed">
+                        New
+                    </button>
+
+                    <button class="filter-btn" data-filter="preparing">
+                        Preparing
+                    </button>
+
+                    <button class="filter-btn" data-filter="ready">
+                        Ready
+                    </button>
+
+                    <button class="filter-btn" data-filter="collected">
+                        Collected
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDERS WILL APPEAR HERE -->
+
+            <div id="ordersList" class="orders-list">
+
+                <div class="loading">
+                    Loading orders...
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script src="vendor.js"></script>
+
+</body>
+</html>
