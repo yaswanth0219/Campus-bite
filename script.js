@@ -741,6 +741,14 @@ const closeHistory =
 
 historyBtn.onclick = async () => {
 
+    const { data: { session } } =
+        await supabaseClient.auth.getSession();
+
+    if (!session) {
+        openAccountModal();
+        return;
+    }
+
     historyOverlay.classList.add("show");
 
     await loadOrderHistory();
