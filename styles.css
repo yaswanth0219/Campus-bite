@@ -331,3 +331,64 @@
     }
 
 }
+
+.login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.login-overlay.show {
+    display: flex;
+}
+
+.login-modal {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    padding: 35px 25px;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.login-modal h2 {
+    margin: 15px 0 10px;
+}
+
+.login-modal p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.login-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.google-login-btn {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.google-icon {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #4285F4;
+}
