@@ -729,18 +729,45 @@ supabaseClient
 // ORDER HISTORY MODAL
 // ===============================
 
-const historyBtn =
-    document.getElementById("historyBtn");
+const historyBtn = document.getElementById("historyBtn");
+const historyOverlay = document.getElementById("historyOverlay");
+const closeHistory = document.getElementById("closeHistory");
 
-const historyOverlay =
-    document.getElementById("historyOverlay");
+const loginOverlay = document.getElementById("loginOverlay");
+const googleLoginBtn = document.getElementById("googleLoginBtn");
+const closeLogin = document.getElementById("closeLogin");
 
-const closeHistory =
-    document.getElementById("closeHistory");
+function openAccountModal() {
+    loginOverlay.classList.add("show");
+}
 
+function closeAccountModal() {
+    loginOverlay.classList.remove("show");
+}
+
+googleLoginBtn.onclick = async () => {
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+            redirectTo: window.location.href
+        }
+    });
+
+    if (error) {
+        console.error("Google login error:", error);
+        toast("Google login failed");
+    }
+};
+
+closeLogin.onclick = closeAccountModal;
+
+loginOverlay.onclick = (event) => {
+    if (event.target === loginOverlay) {
+        closeAccountModal();
+    }
+};
 
 historyBtn.onclick = async () => {
-
     const { data: { session } } =
         await supabaseClient.auth.getSession();
 
@@ -750,33 +777,22 @@ historyBtn.onclick = async () => {
     }
 
     historyOverlay.classList.add("show");
-
     await loadOrderHistory();
 };
 
-
 closeHistory.onclick = () => {
-
     historyOverlay.classList.remove("show");
-
 };
-
 
 historyOverlay.onclick = (event) => {
-
     if (event.target === historyOverlay) {
-
         historyOverlay.classList.remove("show");
-
     }
-
 };
-// Load current order when page opens
 
+// Load current order when page opens
 loadCurrentOrder();
 
-
 // Start website
-
 render();
 updateCart();
